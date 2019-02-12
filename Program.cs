@@ -8,16 +8,16 @@ class Program
     string inputString = Console.ReadLine().ToUpper();
 
     char[] inputArray = inputString.ToCharArray();
-    char[] reverseArray = inputString.ToCharArray();
-    System.Array.Reverse(reverseArray);
+    //char[] reverseArray = inputString.ToCharArray();
+    //System.Array.Reverse(reverseArray);
 
     // Console.WriteLine(inputArray);
     // Console.WriteLine(reverseArray);
 
     bool isPalindrome = true;
-    for(int i = 0; i < inputArray.Length; i++)
+    for(int i = 0; i < inputArray.Length / 2; i++)
     {
-      if (inputArray[i] != reverseArray[i])
+      if (inputArray[i] != inputArray[inputArray.Length - 1 -i])
       {
         isPalindrome = false;
         break;
