@@ -22,6 +22,7 @@ class Program
 
   public static bool PalindromeStringChecker(string inputString)
   {
+    inputString = inputString.Replace(" ", string.Empty);
     char[] inputArray = inputString.ToCharArray();
 
     for(int i = 0; i < inputArray.Length / 2; i++)
