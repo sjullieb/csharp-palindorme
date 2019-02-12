@@ -4,39 +4,60 @@ class Program
 {
   public static void Main(){
 
-    Console.WriteLine("Enter the phrase to check if it's a palindrome:");
-    string inputString = Console.ReadLine().ToUpper();
+    Console.WriteLine("Would you like to check a phrase or a number if it's a palindrome? P for phrase, N for number, Enter to exit");
 
-    char[] inputArray = inputString.ToCharArray();
-    //char[] reverseArray = inputString.ToCharArray();
-    //System.Array.Reverse(reverseArray);
+    string whatToCheck = Console.ReadLine().ToUpper();
 
-    // Console.WriteLine(inputArray);
-    // Console.WriteLine(reverseArray);
-
-    bool isPalindrome = true;
-    for(int i = 0; i < inputArray.Length / 2; i++)
+    if ((whatToCheck == "P") || (whatToCheck == "N"))
     {
-      if (inputArray[i] != inputArray[inputArray.Length - 1 -i])
+      Console.WriteLine("Enter what you would like to check if it's a palindrome:");
+      string inputString = Console.ReadLine().ToUpper();
+      bool isPalindrome = true;
+
+      if (whatToCheck == "P")
       {
-        isPalindrome = false;
-        break;
+        char[] inputArray = inputString.ToCharArray();
+
+        for(int i = 0; i < inputArray.Length / 2; i++)
+        {
+          if (inputArray[i] != inputArray[inputArray.Length - 1 - i])
+          {
+            isPalindrome = false;
+            break;
+          }
+        }
       }
-    }
+      else if (whatToCheck == "N")
+      {
+        int inputNumber = int.Parse(inputString);
+        int number = inputNumber;
+        int newNumber = 0;
+        while (number > 0)
+        {
+          newNumber = newNumber * 10 + number % 10;
+          number = number / 10;
+        }
 
-    if (isPalindrome)
-    {
-      Console.WriteLine("It's a palindrome.");
-    }
-    else
-    {
-      Console.WriteLine("It is NOT a palindrome.");
-    }
+        if (inputNumber != newNumber)
+        {
+          isPalindrome = false;
+        }
+      }
 
-    Console.WriteLine("Would you like to check another phrase? Y for yes, enter for no");
-    if (Console.ReadLine().ToUpper() == "Y")
-    {
-      Main();
+      if (isPalindrome)
+      {
+        Console.WriteLine("It's a palindrome.");
+      }
+      else
+      {
+        Console.WriteLine("It is NOT a palindrome.");
+      }
+
+      Console.WriteLine("Would you like to make another check? Y for yes, enter for no");
+      if (Console.ReadLine().ToUpper() == "Y")
+      {
+        Main();
+      }
     }
   }
 }
